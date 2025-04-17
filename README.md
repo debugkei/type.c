@@ -1,5 +1,5 @@
 # type.c
-* A terminal typing test inspired by [monkeytype](monkeytype.com).
+* A terminal typing test inspired by [monkeytype](https://monkeytype.com).
 * Written fully in C.
 
 ## Contributing
