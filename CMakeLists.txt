@@ -10,7 +10,7 @@ if (MSVC)
   add_compile_options(/arch:AVX2) # Make sure SIMD works on Windows
 endif()
 
-project(type-cpp)
+project(type-c)
 # Define MY_SOURCES to be list of all source files needed
 file(GLOB_RECURSE MY_SOURCES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c)
 
