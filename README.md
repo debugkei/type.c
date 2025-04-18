@@ -1,9 +1,9 @@
-# type.c
+# type.cpp
 * A terminal typing test inspired by [monkeytype](https://monkeytype.com).
-* Written fully in C.
+* Written fully in C++.
 
 ## Contributing
-* Just follow same convention.
+* Just follow same name convention.
 * Send PRs freely.
 * [Docs](Docs.md) has an abstract documentation.
 

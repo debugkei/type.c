@@ -4,7 +4,7 @@
 
 ### File retrievement
 #### Files that are used to generates texts are:
-* Default, at /usr/share/type.c/1000en
+* Takes 1 from ~/.type.cpp/
 * Specified by the -f flag
 * Read from stdin, if piped, though it slows down the performace.
 
