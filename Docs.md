@@ -4,7 +4,7 @@
 
 ### File retrievement
 #### Files that are used to generates texts are:
-* Takes 1 from ~/.type.cpp/
+* Takes 1 from ~/.type.c/
 * Specified by the -f flag
 * Read from stdin, if piped, though it slows down the performace.
 
@@ -12,16 +12,17 @@
 ##### The file retrievement will do following:
 ###### If get from file:
 * Get only necessary random words on start.
-* Then in backgound in separate thread will get the rest into an array from which via rand() application will get texts.
+* Then in backgound in separate thread will get the rest into a vector from which via rand() application will get texts.
 
 ###### If get from pipe:
 * Read stdin in array, switch the state to done.
 * Not the most performant, but added only for intuitive use, not mostly used.
 
-##### Why array?
+##### Why vector?
 * Because fast retrival time, O(1).
 * Because Ctrl + C is used to exit, the OS will clear all the memory itself.
 * In background so no real need to get fast insertion.
+* Ill write myself.
 
 ### States
 * Application will have states.

@@ -1,6 +1,6 @@
-# type.cpp
+# type.c
 * A terminal typing test inspired by [monkeytype](https://monkeytype.com).
-* Written fully in C++.
+* Written fully in C.
 
 ## Contributing
 * Just follow same name convention.
