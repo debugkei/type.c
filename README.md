@@ -5,7 +5,14 @@
 ## Contributing
 * Just follow same name convention.
 * Send PRs freely.
-* [Docs](Docs.md) has an abstract documentation.
+
+## TODO/Roadmap
+| State | TODO |
+| ----- | ---- |
+|  ❌   | Make core application |
+|  ❌   | Next word is highlighted |
+|  ❌   | Ctrl + Bspc = -word |
+|  ✅   | Plan the application architecture |
 
 ## Credits
 * [monkeytype](https://monkeytype.com) for inspiration.
