@@ -2,10 +2,11 @@
 
 #include<stdlib.h>
 
-#include"dispatcher.h"
-#include"graphics.h"
+#include"../dispatcher/dispatcher.h"
+#include"../graphics/graphics.h"
 
 void InitApplication(){
+  InitDispatcher();
   InitGraphics();
 }
 
