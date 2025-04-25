@@ -12,13 +12,13 @@ static void _DefaultDest(void* pV){}
 ///@param pMiddle is the middle point all starting from it will be sliden to the left to starting point.
 ///@param pEnd is the ending point, pStart - pMiddle will be now at the very end.
 static void Slide(void* pStart, void* pMiddle, void* pEnd){
-  int nFirst = pMiddle - pStart;
-  int nSecond = pEnd - pMiddle;
+  int nFirst = (char*)pMiddle - (char*)pStart;
+  int nSecond = (char*)pEnd - (char*)pMiddle;
   char buffer[nFirst];
 
   memcpy(buffer, pStart, nFirst);
   memmove(pStart, pMiddle, nSecond);
-  void* pNewEnd = (char*)pStart + nSecond;
+  void* pNewEnd = (char*)pEnd - nFirst;
   memcpy(pNewEnd, buffer, nFirst);
 }
 
@@ -29,7 +29,7 @@ static void ExpandVector(SortedVector* pVec){
   //Just double the vector's allocated space
   int newSize = pVec->_allocLength * 2;
 
-  pVec->_elems = realloc(pVec->_elems, newSize);
+  pVec->_elems = realloc(pVec->_elems, newSize * pVec->_elemSize);
   assert(pVec->_elems != NULL);
 
   pVec->_allocLength = newSize;
@@ -140,7 +140,7 @@ void PushElementSortedVector(SortedVector* pVec, void* pElem){
   int insertAt = BSearchForInsertPos(pVec->_elems, pElem, elemSize, n, pVec->_cmpFn);
 
   void* pElemStart = (char*)pVec->_elems + insertAt * elemSize;
-  void* pElemsEnd = (char*)pVec->_elems + (n - 1) * elemSize;
+  void* pElemsEnd = (char*)pVec->_elems + n * elemSize;
   void* pElemAfterEnd = pElemsEnd + elemSize;
   Slide(pElemStart, pElemsEnd, pElemAfterEnd);
 

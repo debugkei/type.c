@@ -34,14 +34,36 @@ void _AddLayer(_TLayerFn func, int priority){
   PushElementSortedVector(&_layerVec, &layer);
 }
 
+int TestFunc1(char chr){
+  PrintScreen("TestFunc1: The char is %c\n", chr);
+  return 0;
+}
+
+int TestFunc2(char chr){
+  PrintScreen("TestFunc2: The char is %c\n", chr);
+  return 1;
+}
+
+int TestFunc3(char chr){
+  PrintScreen("TestFunc3: The char is %c\n", chr);
+  return 1;
+}
+
 void InitDispatcher(){
   InitSortedVector(&_layerVec, sizeof(_Layer), 0, _LayerCmp);
-  //TODO: Push the layers on the SortedVector
+
+  _AddLayer(TestFunc1, 3);
+  _AddLayer(TestFunc2, 2);
+  _AddLayer(TestFunc3, 1);
 }
 
 void Dispatch(char chr){
-  PrintScreen("The char is %c", chr); //Debug
-  //TODO: Dispatch to layers
+  int n = _layerVec.length;
+  //Iterate in reverse because sort least->greatest
+  for (int i = n - 1; i >= 0; --i){
+    _Layer layer = *(_Layer*)GetElementAtSortedVector(&_layerVec, i);
+    if (layer.func(chr)) break;
+  }
 }
 
 void DestroyDispatcher(){

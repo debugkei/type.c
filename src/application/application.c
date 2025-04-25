@@ -8,8 +8,8 @@
 int applicationShouldClose = 0;
 
 void InitApplication(){
-  InitDispatcher();
   InitGraphics();
+  InitDispatcher();
 }
 
 void RunApplication(){
