@@ -35,6 +35,8 @@ void InitGraphics(){
 
   //Enable arrows
   keypad(stdscr, true);
+
+  raw(); //Handle ctrl + c in application
 }
 
 void ExitGraphics(){
