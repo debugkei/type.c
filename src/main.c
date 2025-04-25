@@ -3,5 +3,6 @@
 int main(){
   InitApplication();
   RunApplication();
-  //No return because use Exit from application module
+  ExitApplication();
+  return 0;
 }

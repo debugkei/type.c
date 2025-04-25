@@ -27,7 +27,11 @@ SortedVector _layerVec;
 ///It takes a char.
 ///@param priority is the priority in which the function is going to get dispathed to, more priority marks the function for earlier dispaching.
 void _AddLayer(_TLayerFn func, int priority){
-  //TODO: add layer logic
+  _Layer layer;
+  layer.func = func;
+  layer.priority = priority;
+
+  PushElementSortedVector(&_layerVec, &layer);
 }
 
 void InitDispatcher(){
@@ -38,4 +42,8 @@ void InitDispatcher(){
 void Dispatch(char chr){
   PrintScreen("The char is %c", chr); //Debug
   //TODO: Dispatch to layers
+}
+
+void DestroyDispatcher(){
+  DestroySortedVector(&_layerVec);
 }

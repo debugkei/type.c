@@ -5,6 +5,8 @@
 #include"../dispatcher/dispatcher.h"
 #include"../graphics/graphics.h"
 
+int applicationShouldClose = 0;
+
 void InitApplication(){
   InitDispatcher();
   InitGraphics();
@@ -12,7 +14,7 @@ void InitApplication(){
 
 void RunApplication(){
   char chr;
-  while (1){
+  while (!applicationShouldClose){
     chr = GetChar();
     ClearScreen();
     Dispatch(chr);
@@ -20,7 +22,9 @@ void RunApplication(){
   }
 }
 
-void ExitApplication(int code){
+void ExitApplication(){
   ExitGraphics();
-  exit(code);
+  DestroyDispatcher();
+
+  applicationShouldClose = 1;
 }

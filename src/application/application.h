@@ -5,7 +5,7 @@ void RunApplication();
 
 ///@brief Call to exit, exits the program clearing after it.
 ///@param code is the exit code.
-void ExitApplication(int code);
+void ExitApplication();
 
 ///@brief Call before Run, initializes proper values necessary for the application to run.
 void InitApplication();
