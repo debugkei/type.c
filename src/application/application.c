@@ -1,15 +1,15 @@
 #include"application.h"
 
-#include<stdlib.h>
-
 #include"../dispatcher/dispatcher.h"
 #include"../graphics/graphics.h"
 
-int applicationShouldClose = 0;
+int applicationShouldClose;
 
 void InitApplication(){
   InitGraphics();
   InitDispatcher();
+
+  applicationShouldClose = 0;
 }
 
 void RunApplication(){
@@ -25,6 +25,8 @@ void RunApplication(){
 void ExitApplication(){
   ExitGraphics();
   DestroyDispatcher();
+}
 
+void ApplicationShouldClose(){
   applicationShouldClose = 1;
 }

@@ -2,6 +2,7 @@
 
 #include"../graphics/graphics.h"
 #include"../structs/sortedVector/sortedVector.h"
+#include"../layers/shortcuts/shortcuts.h"
 
 typedef int(*_TLayerFn)(char);
 
@@ -34,27 +35,11 @@ void _AddLayer(_TLayerFn func, int priority){
   PushElementSortedVector(&_layerVec, &layer);
 }
 
-int TestFunc1(char chr){
-  PrintScreen("TestFunc1: The char is %c\n", chr);
-  return 0;
-}
-
-int TestFunc2(char chr){
-  PrintScreen("TestFunc2: The char is %c\n", chr);
-  return 1;
-}
-
-int TestFunc3(char chr){
-  PrintScreen("TestFunc3: The char is %c\n", chr);
-  return 1;
-}
-
 void InitDispatcher(){
   InitSortedVector(&_layerVec, sizeof(_Layer), 0, _LayerCmp);
 
-  _AddLayer(TestFunc1, 3);
-  _AddLayer(TestFunc2, 2);
-  _AddLayer(TestFunc3, 1);
+  _AddLayer(HandleCtrlC, 10);
+  _AddLayer(HandleCtrlD, 10);
 }
 
 void Dispatch(char chr){
