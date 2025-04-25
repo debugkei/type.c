@@ -10,6 +10,13 @@ typedef struct{
   int priority;
 } _Layer;
 
+static int _LayerCmp(void* pV1, void* pV2){
+  _Layer l1 = *(_Layer*)pV1;
+  _Layer l2 = *(_Layer*)pV2;
+
+  return l1.priority - l2.priority;
+}
+
 SortedVector _layerVec;
 
 ///@brief Adds a layer to dispatcher to consider, with certain priority.
@@ -23,11 +30,8 @@ void _AddLayer(_TLayerFn func, int priority){
   //TODO: add layer logic
 }
 
-#define OffsetOf(Struct, Elem)\
-  (long int)(char*)&(((Struct*)0)->Elem)
-
 void InitDispatcher(){
-  InitSortedVector(&_layerVec, OffsetOf(_Layer, priority), sizeof(_Layer), 0);
+  InitSortedVector(&_layerVec, sizeof(_Layer), 0, _LayerCmp);
   //TODO: Push the layers on the SortedVector
 }
 
