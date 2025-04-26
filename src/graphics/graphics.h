@@ -1,3 +1,5 @@
+#pragma once
+
 #include"../structs/vectors/vectors.h"
 
 ///@brief Moves the cursor relatively to its current position by x and y.

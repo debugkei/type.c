@@ -1,6 +1,6 @@
 #include"shortcuts.h"
 
-#include"../../application/application.h"
+#include"application/application.h"
 
 int HandleCtrlC(char chr){
   if (chr == (char)3){ //Handle ctrl c

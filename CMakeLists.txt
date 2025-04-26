@@ -20,3 +20,6 @@ add_executable(${CMAKE_PROJECT_NAME} ${MY_SOURCES})
 find_package(Curses REQUIRED)
 target_link_libraries(${CMAKE_PROJECT_NAME} ${CURSES_LIBRARIES})
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE ${CURSES_INCLUDE_DIR})
+
+# Add include dir to src/
+target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/src)
