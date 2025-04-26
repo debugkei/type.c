@@ -12,7 +12,7 @@
 |  ❌   | Make core application |
 |  ❌   | Next word is highlighted |
 |  ❌   | Ctrl + Bspc = -word |
-|  ❌   | Recieve Ctrl + C and clean up |
+|  ✅   | Recieve Ctrl + C and clean up |
 |  ✅   | Plan the application architecture |
 
 ## Credits
