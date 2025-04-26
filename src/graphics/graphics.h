@@ -1,3 +1,5 @@
+#include"../structs/vectors/vectors.h"
+
 ///@brief Moves the cursor relatively to its current position by x and y.
 ///@param x is the x + current cursor position = new cursor position.
 ///@param y is same as x but its y.
@@ -22,3 +24,9 @@ char GetChar();
 
 ///@brief Terminates the graphics.
 void ExitGraphics();
+
+///@brief Gets current x and y.
+IVec2 GetCursorPos();
+
+///@brief Gets maximum x and y positions.
+IVec2 GetMaxCursorPos();

@@ -2,7 +2,9 @@
 
 #include"../graphics/graphics.h"
 #include"../structs/sortedVector/sortedVector.h"
+
 #include"../layers/shortcuts/shortcuts.h"
+#include"../layers/commands/commands.h"
 
 typedef int(*_TLayerFn)(char);
 
@@ -40,6 +42,7 @@ void InitDispatcher(){
 
   _AddLayer(HandleCtrlC, 10);
   _AddLayer(HandleCtrlD, 10);
+  _AddLayer(HandleCommands, 9);
 }
 
 void Dispatch(char chr){

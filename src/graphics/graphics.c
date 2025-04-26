@@ -4,7 +4,7 @@
 #include<stdarg.h>
 
 void MoveCursor(int x, int y){
-  move(x, y);
+  move(y, x);
 }
 
 void RefreshScreen(){
@@ -37,6 +37,9 @@ void InitGraphics(){
   keypad(stdscr, true);
 
   raw(); //Handle ctrl + c in application
+
+  //Disable cursor
+  curs_set(0);
 }
 
 void ExitGraphics(){
@@ -45,4 +48,18 @@ void ExitGraphics(){
 
 char GetChar(){
   return getch();
+}
+
+IVec2 GetCursorPos(){
+  IVec2 vec;
+  vec.x = getcurx(stdscr);
+  vec.y = getcury(stdscr);
+  return vec;
+}
+
+IVec2 GetMaxCursorPos(){
+  IVec2 vec;
+  vec.x = getmaxx(stdscr);
+  vec.y = getmaxy(stdscr);
+  return vec;
 }
