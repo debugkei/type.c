@@ -1,11 +1,11 @@
 #include"dispatcher.h"
 
-#include"layers/layerChain.h"
+#include"layer/chain/layerChain.h"
 
 #include"layers/shortcuts/shortcuts.h"
 #include"layers/commands/commands.h"
 
-SortedVector _layerChain;
+static SortedVector _layerChain;
 
 void InitDispatcher(){
   InitLayerChain(&_layerChain);
@@ -19,7 +19,7 @@ void InitDispatcher(){
 }
 
 void Dispatch(char chr){
-  DispatchToLayerChain(&_layerChain, chr);
+  DispatchToLayerChain(&_layerChain, &chr);
 }
 
 void DestroyDispatcher(){

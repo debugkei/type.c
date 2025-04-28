@@ -2,7 +2,8 @@
 
 #include"application/application.h"
 
-int HandleCtrlC(char chr){
+int HandleCtrlC(void* pChr){
+  char chr = *(char*)pChr;
   if (chr == (char)3){ //Handle ctrl c
     ApplicationShouldClose();
     return 1;
@@ -10,7 +11,8 @@ int HandleCtrlC(char chr){
   return 0;
 }
 
-int HandleCtrlD(char chr){
+int HandleCtrlD(void* pChr){
+  char chr = *(char*)pChr;
   if (chr == (char)4){ //Handle ctrl d
     ApplicationShouldClose();
     return 1;

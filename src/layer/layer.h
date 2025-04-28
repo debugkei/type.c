@@ -1,4 +1,4 @@
-typedef int(*TLayerFn)(char);
+typedef int(*TLayerFn)(void*);
 
 typedef struct{
   TLayerFn func;

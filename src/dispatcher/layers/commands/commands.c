@@ -1,17 +1,27 @@
 #include"commands.h"
 
-#include"layers/layerChain.h"
+#include"layer/chain/layerChain.h"
+#include"layers/input.h"
 
-SortedVector _layerChain;
+static SortedVector _layerChain;
 
 void InitCommands(){
   InitLayerChain(&_layerChain);
 
-  //TODO: Add layers
+  AddLayer(&_layerChain, HandleStop, 10);
+  AddLayer(&_layerChain, HandleExecute, 10);
+  AddLayer(&_layerChain, HandleDelChar, 10);
+  AddLayer(&_layerChain, HandleStart, 10);
+  AddLayer(&_layerChain, HandleCommandOverflow, 9);
+  AddLayer(&_layerChain, HandleChar, 8);
 }
 
-int HandleCommands(char chr){
-  return DispatchToLayerChain(&_layerChain, chr);
+int HandleCommands(void* pChr){
+  int didDispatchSuccessfully = DispatchToLayerChain(&_layerChain, pChr);
+
+  OutputIfCommands();
+
+  return didDispatchSuccessfully;
 }
 
 void DestroyCommands(){

@@ -17,12 +17,12 @@ void DestroyLayerChain(SortedVector* pVec){
   DestroySortedVector(pVec);
 }
 
-int DispatchToLayerChain(SortedVector* pVec, char chr){
+int DispatchToLayerChain(SortedVector* pVec, void* pV){
   int n = pVec->length;
   //Iterate in reverse because sort least->greatest
   for (int i = n - 1; i >= 0; --i){
     Layer layer = *(Layer*)GetElementAtSortedVector(pVec, i);
-    if (layer.func(chr)) return 1;
+    if (layer.func(pV)) return 1;
   }
   return 0;
 }

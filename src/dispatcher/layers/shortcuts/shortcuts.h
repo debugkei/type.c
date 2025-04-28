@@ -1,2 +1,2 @@
-int HandleCtrlC(char chr);
-int HandleCtrlD(char chr);
+int HandleCtrlC(void* pChr);
+int HandleCtrlD(void* pChr);
