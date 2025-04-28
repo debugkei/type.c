@@ -1,6 +1,6 @@
 # Files
-NotesForMyself.*
 compile_commands.*
 
 # Dirs
 build/
+.cache/
