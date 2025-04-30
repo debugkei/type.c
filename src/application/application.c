@@ -3,7 +3,7 @@
 #include"dispatcher/dispatcher.h"
 #include"graphics/graphics.h"
 
-int applicationShouldClose;
+static int applicationShouldClose;
 
 void InitApplication(){
   InitGraphics();
