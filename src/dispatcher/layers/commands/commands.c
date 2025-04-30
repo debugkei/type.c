@@ -8,6 +8,7 @@ static SortedVector _layerChain;
 void InitCommands(){
   InitLayerChain(&_layerChain);
 
+  InitInputs();
   AddLayer(&_layerChain, HandleStop, 10);
   AddLayer(&_layerChain, HandleExecute, 10);
   AddLayer(&_layerChain, HandleDelChar, 10);
@@ -26,4 +27,5 @@ int HandleCommands(void* pChr){
 
 void DestroyCommands(){
   DestroyLayerChain(&_layerChain);
+  DestroyInputs();
 }

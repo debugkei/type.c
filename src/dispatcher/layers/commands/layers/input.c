@@ -1,6 +1,7 @@
 #include"input.h"
 
 #include"graphics/graphics.h"
+#include"execute/execute.h"
 
 static int isCapturingCommandInput = 0;
 
@@ -33,9 +34,7 @@ int HandleExecute(void* pChr){
   char chr = *(char*)pChr;
 
   if (chr == SUBMITCOMMAND && isCapturingCommandInput){
-    //TODO: execute logic, via another dispatch and parse
-    _ExitCommands();
-    return 1;
+    return Execute(command, currentCommandWriteIndex);
   }
 
   return 0;
@@ -101,4 +100,12 @@ void OutputIfCommands(){
       PrintScreen("%c", command[i]);
     }
   }
+}
+
+void InitInputs(){
+  InitExecute();
+}
+
+void DestroyInputs(){
+  DestroyExecute();
 }

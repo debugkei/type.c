@@ -1,3 +1,9 @@
+///@brief Initializes the inputs.
+void InitInputs();
+
+///@brief Destroys and clean after inputs.
+void DestroyInputs();
+
 ///@brief This function handles the start of going into typing command state.
 int HandleStart(void* pChr);
 
