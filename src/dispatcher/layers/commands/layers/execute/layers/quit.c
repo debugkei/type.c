@@ -6,7 +6,7 @@
 #include"structs/command/command.h"
 
 #define SIZE 3
-static const char* commands[SIZE] = {
+static const char* commandsToQuit[SIZE] = {
   "q",
   "Q",
   "quit",
@@ -14,10 +14,10 @@ static const char* commands[SIZE] = {
 
 int HandleQuit(void* pVCommand){
   Command* pCommand = (Command*)pVCommand;
-  char* placeWithCommand = pCommand->pListNode->value;
+  char* command = pCommand->pListNode->value;
 
   for (int i = 0; i < SIZE; ++i){
-    int eql = !strcmp(placeWithCommand, commands[i]);
+    int eql = !strcmp(command, commandsToQuit[i]);
 
     if (eql){
       ExitApplication();
