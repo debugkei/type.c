@@ -21,9 +21,10 @@ static void _ExitCommands(){
 int HandleStart(void* pChr){
   char chr = *(char*)pChr;
 
-  if (chr == COMMANDCAPTURETOGGLE){
+  if (chr == COMMANDCAPTURETOGGLE && !isCapturingCommandInput){
     isCapturingCommandInput = 1;
     currentCommandWriteIndex = 0;
+
     return 1;
   }
 
@@ -34,7 +35,9 @@ int HandleExecute(void* pChr){
   char chr = *(char*)pChr;
 
   if (chr == SUBMITCOMMAND && isCapturingCommandInput){
-    return Execute(command, currentCommandWriteIndex);
+    isCapturingCommandInput = 0;
+    int didExecute = Execute(command, currentCommandWriteIndex);
+    return didExecute;
   }
 
   return 0;

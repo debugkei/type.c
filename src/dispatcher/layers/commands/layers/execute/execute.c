@@ -1,28 +1,39 @@
 #include"execute.h"
 
+#include<memory.h>
+
+#include"structs/command/command.h"
+
 #include"layer/chain/layerChain.h"
+#include"layers/quit.h"
+#include"layers/error.h"
 
 static SortedVector _layerChain;
 
-static void _ParseCommand(Command* pThisCommand, void* pCommand, int n){
-  //TODO: create a command struct
-  //That command struct will be just an array of pointers to chars in pCommand after every whitespace and on start of every word
-  
-  //TODO: logic of execute
-  //TODO: logic of quit
-  //TODO: logic of words command
-}
-
 void InitExecute(){
   InitLayerChain(&_layerChain);
+
+  AddLayer(&_layerChain, HandleQuit, 10);
+  AddLayer(&_layerChain, HandleError, 9);
 }
 
 void DestroyExecute(){
   DestroyLayerChain(&_layerChain);
 }
 
+//Potentially TODO: Refactor
 int Execute(void* pCommand, int n){
+  char commandBuffer[(n + 1) * sizeof(char)]; //Create another for the ParseCommand, it requires an array where command[n] is always allocated.
+  memcpy(commandBuffer, pCommand, n * sizeof(char));
+
   Command command;
-  _ParseCommand(&command, pCommand, n);
-  return DispatchToLayerChain(&_layerChain, &command);
+  ParseCommand(&command, commandBuffer, n);
+
+  if (!command.pListNode) return 1;
+
+  int didDispatch = DispatchToLayerChain(&_layerChain, &command);
+
+  DestroyCommand(&command);
+
+  return didDispatch;
 }

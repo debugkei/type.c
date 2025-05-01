@@ -4,12 +4,14 @@
 #include"graphics/graphics.h"
 
 static int applicationShouldClose;
+static int applicationClosed;
 
 void InitApplication(){
   InitGraphics();
   InitDispatcher();
 
   applicationShouldClose = 0;
+  applicationClosed = 0;
 }
 
 void RunApplication(){
@@ -23,10 +25,11 @@ void RunApplication(){
 }
 
 void ExitApplication(){
+  if (applicationClosed) return;
+
+  applicationClosed = 1;
+  applicationShouldClose = 1;
+
   ExitGraphics();
   DestroyDispatcher();
-}
-
-void ApplicationShouldClose(){
-  applicationShouldClose = 1;
 }

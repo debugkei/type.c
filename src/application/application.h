@@ -8,6 +8,3 @@ void ExitApplication();
 
 ///@brief Call before Run, initializes proper values necessary for the application to run.
 void InitApplication();
-
-///@brief Indicates that the application should close.
-void ApplicationShouldClose();

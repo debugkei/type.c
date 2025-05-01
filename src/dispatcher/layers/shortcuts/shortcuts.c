@@ -5,7 +5,7 @@
 int HandleCtrlC(void* pChr){
   char chr = *(char*)pChr;
   if (chr == (char)3){ //Handle ctrl c
-    ApplicationShouldClose();
+    ExitApplication();
     return 1;
   }
   return 0;
@@ -14,7 +14,7 @@ int HandleCtrlC(void* pChr){
 int HandleCtrlD(void* pChr){
   char chr = *(char*)pChr;
   if (chr == (char)4){ //Handle ctrl d
-    ApplicationShouldClose();
+    ExitApplication();
     return 1;
   }
   return 0;
