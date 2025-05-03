@@ -42,7 +42,7 @@ void InitGraphics(){
   curs_set(0);
 }
 
-void ExitGraphics(){
+void DestroyGraphics(){
   endwin();
 }
 

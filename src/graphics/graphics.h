@@ -25,7 +25,7 @@ void InitGraphics();
 char GetChar();
 
 ///@brief Terminates the graphics.
-void ExitGraphics();
+void DestroyGraphics();
 
 ///@brief Gets current x and y.
 IVec2 GetCursorPos();

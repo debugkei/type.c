@@ -2,6 +2,7 @@
 
 #include"dispatcher/dispatcher.h"
 #include"graphics/graphics.h"
+#include"filewords/filewords.h"
 
 static int applicationShouldClose;
 static int applicationClosed;
@@ -9,6 +10,7 @@ static int applicationClosed;
 void InitApplication(){
   InitGraphics();
   InitDispatcher();
+  InitFilewords();
 
   applicationShouldClose = 0;
   applicationClosed = 0;
@@ -30,6 +32,7 @@ void ExitApplication(){
   applicationClosed = 1;
   applicationShouldClose = 1;
 
-  ExitGraphics();
+  DestroyGraphics();
   DestroyDispatcher();
+  DestroyFilewords();
 }
