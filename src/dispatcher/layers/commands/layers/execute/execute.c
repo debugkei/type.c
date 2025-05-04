@@ -21,7 +21,6 @@ void DestroyExecute(){
   DestroyLayerChain(&_layerChain);
 }
 
-//Potentially TODO: Refactor
 int Execute(void* pCommand, int n){
   char commandBuffer[(n + 1) * sizeof(char)]; //Create another for the ParseCommand, it requires an array where command[n] is always allocated.
   memcpy(commandBuffer, pCommand, n * sizeof(char));
